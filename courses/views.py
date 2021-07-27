@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.shortcuts import render
 
 
 # Create your views here.
@@ -27,4 +27,9 @@ def index(request):
 	}
 	return HttpResponse(template.render(context, request))
 
-	return render('templates/courses/index.html')
+def detail(request,course_id):
+	template = loader.get_template('courses/detail.html')
+	context={
+		'course_id':course_id
+}
+	return HttpResponse(template.render(context, request))
